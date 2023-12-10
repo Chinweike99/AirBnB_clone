@@ -73,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
         del storage.all()[key]
         storage.save()
 
-"""    def do_update(self, arg):
+    def do_update(self, arg):
         """Updates an instance based on the class name and id by
         adding or updating attribute
         """
@@ -111,7 +111,7 @@ class HBNBCommand(cmd.Cmd):
             except ValueError:
                 pass
         obj.save()
-"""
+
     def do_all(self, arg=""):
         """Prints all string representation of all
         instances based or not on the class name
