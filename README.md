@@ -1,4 +1,5 @@
-***Description of the project***
+**Description of the project**
+
  An "Airbnb Clone" project (working with console) is a software development exercise that involves creating a text-based interface (CLI) that simulates the functionality of Airbnb, a popular online marketplace for lodging.
 
 **Key Features Of an Airbnb Clone Console project**
