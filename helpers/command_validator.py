@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-"""Module defines validation Rules."""
+"""This module defines validation Rules."""
 
-from helpers.class_loader import ClassLoader
+
 from models import storage
+from helpers.class_loader import ClassLoader
+
 
 class CommandValidator:
     """Provides validation Rules."""
@@ -11,9 +13,11 @@ class CommandValidator:
     def canUseModel(arg):
         """Returns True if the command can be processed,
         Otherwise, returns False
+
         Args:
             arg(str): The argument to be validated
         """
+
         if type(arg) is not str:
             return False
 
@@ -64,8 +68,9 @@ class CommandValidator:
 
     @staticmethod
     def canDoUpdate(arg):
-        """Method that Returns True if an update can be done, False
+        """Returns True if an update can be done, False
         Otherwise.
+
         Args:
             arg(str): The argument to be validated
 
@@ -85,4 +90,5 @@ class CommandValidator:
         if len(args) < 4:
             print("** value missing **")
             return False
+
         return True

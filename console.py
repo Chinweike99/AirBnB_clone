@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Consule Module.
+"""This module contains the console interface for interacting
+with the Application.
 """
 
 import cmd
@@ -9,32 +10,37 @@ from helpers.command_parser import CommandParser
 from models import storage
 from helpers.command_validator import CommandValidator
 from helpers.class_loader import ClassLoader
-
 class HBNBCommand(cmd.Cmd):
-    """Contains all the commands that this application can execute"""
+    """The Application console class. Contains all the
+    commands that this application can execute
+    """
 
-    prompt = '(hbnb) '
+    prompt = "(hbnb) "
 
     def emptyline(self):
         """Ensures that an empty line + ENTER shouldn’t
         execute anything"""
+
         return False
 
     def do_quit(self, arg):
-        """Command to exit the program
+        """Quit command to exit the program
         """
+
         return True
 
     def do_EOF(self, arg):
         """End of File command to exit the program
         """
+
         print()
         return True
 
     def do_create(self, arg):
-        """Command to Creates a new instance of given class, saves it to json
+        """Creates a new instance of given class, saves it to json
         file and print the id
         """
+
         if not CommandValidator.canUseModel(arg):
             return False
         model = ClassLoader.load(arg)
@@ -49,14 +55,16 @@ class HBNBCommand(cmd.Cmd):
 
         if not CommandValidator.canDoCommand(arg):
             return False
+
         args = arg.strip().split(" ")
         key = "{}.{}".format(args[0], args[1])
         obj = storage.all().get(key, None)
         print(obj)
 
     def do_destroy(self, arg):
-        """Command to Delete an instance based on the class name and id
+        """Deletes an instance based on the class name and id
         """
+
         if not CommandValidator.canDoCommand(arg):
             return False
 
@@ -69,6 +77,7 @@ class HBNBCommand(cmd.Cmd):
         """Updates an instance based on the class name and id by
         adding or updating attribute
         """
+
         if not CommandValidator.canDoUpdate(arg):
             return False
 
@@ -82,7 +91,7 @@ class HBNBCommand(cmd.Cmd):
                 raw_dict_list[0] = raw_dict_list[0].replace("'", '"')
                 to_update = json.loads(raw_dict_list[0])
             except Exception:
-                print("Error")
+                print("failed")
                 pass
         else:
             key = args[2].replace('"', '')
@@ -107,18 +116,19 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of all
         instances based or not on the class name
         """
+
         list_o = []
         if arg == "":
-            objects = storage.all()
-            for key in objects:
-                list_o.append(str(objects[key]))
+            objs = storage.all()
+            for key in objs:
+                list_o.append(str(objs[key]))
         else:
             if not CommandValidator.canUseModel(arg):
                 return False
-            objects = storage.all()
-            for key in objects:
+            objs = storage.all()
+            for key in objs:
                 if arg in key:
-                    list_o.append(str(objects[key]))
+                    list_o.append(str(objs[key]))
         print(list_o)
 
     def do_count(self, arg=""):
@@ -134,6 +144,7 @@ class HBNBCommand(cmd.Cmd):
 
     def precmd(self, line=""):
         """Hook to process command before is executed"""
+
         return CommandParser.parse(line)
 
     def onecmd(self, line=""):

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-This module contains class user
-which inherits from class BaseModel
+module user contains class user
+and inherits from class BaseModel
 """
 
 
