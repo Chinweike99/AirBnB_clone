@@ -61,7 +61,7 @@ class HBNBCommand(cmd.Cmd):
         obj = storage.all().get(key, None)
         print(obj)
 
-    def do_destroy(self, arg):
+"""    def do_destroy(self, arg):
         """Deletes an instance based on the class name and id
         """
 
@@ -111,7 +111,7 @@ class HBNBCommand(cmd.Cmd):
             except ValueError:
                 pass
         obj.save()
-
+"""
     def do_all(self, arg=""):
         """Prints all string representation of all
         instances based or not on the class name
@@ -154,4 +154,4 @@ class HBNBCommand(cmd.Cmd):
 
 
 if __name__ == '__main__':
-    HBNBCommand().cmdloop()
+     HBNBCommand().cmdloop()
