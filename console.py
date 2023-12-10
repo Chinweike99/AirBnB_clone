@@ -61,7 +61,7 @@ class HBNBCommand(cmd.Cmd):
         obj = storage.all().get(key, None)
         print(obj)
 
-"""    def do_destroy(self, arg):
+    def do_destroy(self, arg):
         """Deletes an instance based on the class name and id
         """
 
@@ -73,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
         del storage.all()[key]
         storage.save()
 
-    def do_update(self, arg):
+"""    def do_update(self, arg):
         """Updates an instance based on the class name and id by
         adding or updating attribute
         """
